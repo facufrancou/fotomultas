@@ -1,0 +1,20 @@
+[
+  { "id": 1, "direccion": "Av. Almafuerte y Salellas", "lat": -31.762177, "lng": -60.457237, "confiable": true },
+  { "id": 2, "direccion": "Av. Ramírez y Av. de las Américas", "lat": -31.758431, "lng": -60.508944, "confiable": true },
+  { "id": 3, "direccion": "Av. Rivadavia y Perón", "lat": -31.734233, "lng": -60.520811, "confiable": true },
+  { "id": 4, "direccion": "Av. Circunvalación y Blas Parera", "lat": -31.774381, "lng": -60.474155, "confiable": true },
+  { "id": 5, "direccion": "Bv. Racedo y España", "lat": -31.735814, "lng": -60.526612, "confiable": false },
+  { "id": 6, "direccion": "Av. Ejército Argentino y Villa Sarmiento", "lat": -31.775944, "lng": -60.518293, "confiable": true },
+  { "id": 7, "direccion": "Av. Tavella y Corrientes", "lat": -31.746925, "lng": -60.512071, "confiable": true },
+  { "id": 8, "direccion": "Av. Alameda de la Federación y Bv. Anacarsis Lanús", "lat": -31.749418, "lng": -60.531677, "confiable": false },
+  { "id": 9, "direccion": "Av. Zanni y Illia", "lat": -31.796311, "lng": -60.500842, "confiable": true },
+  { "id": 10, "direccion": "Av. de las Américas y Grella", "lat": -31.766832, "lng": -60.502955, "confiable": true },
+  { "id": 11, "direccion": "Bv. Racedo y Av. Ramírez", "lat": -31.741225, "lng": -60.512399, "confiable": true },
+  { "id": 12, "direccion": "Av. Almafuerte y Av. de las Américas", "lat": -31.760622, "lng": -60.484891, "confiable": true },
+  { "id": 13, "direccion": "Ruta 11 y Cno. de la Vieja Federación", "lat": -31.720548, "lng": -60.526104, "confiable": false },
+  { "id": 14, "direccion": "Av. Rivadavia y Bv. Racedo", "lat": -31.736510, "lng": -60.523107, "confiable": true },
+  { "id": 15, "direccion": "Av. Circunvalación y Ruta 12", "lat": -31.803955, "lng": -60.479812, "confiable": true },
+  { "id": 16, "direccion": "Corrientes y Urquiza (microcentro)", "lat": -31.732883, "lng": -60.522215, "confiable": true },
+  { "id": 17, "direccion": "Av. Antártida Argentina y Ayacucho", "lat": -31.741899, "lng": -60.501333, "confiable": false },
+  { "id": 18, "direccion": "Av. Jorge Newbery y Av. de las Américas", "lat": -31.780215, "lng": -60.492188, "confiable": true }
+]

@@ -1,0 +1,21 @@
+# dependencias
+node_modules
+
+# build
+dist
+dist-ssr
+dev-dist
+
+# logs
+*.log
+npm-debug.log*
+
+# editor / OS
+.DS_Store
+.vscode/*
+!.vscode/extensions.json
+*.local
+
+# vite pwa dev sw cache
+sw.js
+workbox-*.js

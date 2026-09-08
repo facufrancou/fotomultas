@@ -1,0 +1,79 @@
+.wrap {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  background: var(--bg);
+  color: var(--text);
+}
+
+.radar {
+  position: relative;
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  background:
+    radial-gradient(circle, transparent 0%, transparent 60%, var(--border) 61%, transparent 62%),
+    radial-gradient(circle, transparent 0%, transparent 38%, var(--border) 39%, transparent 40%);
+  overflow: hidden;
+}
+
+.sweep {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: conic-gradient(from 0deg, color-mix(in srgb, var(--accent) 70%, transparent), transparent 32%);
+  animation: spin 1.6s linear infinite;
+}
+
+.dot {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 8px;
+  height: 8px;
+  margin: -4px 0 0 -4px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 12px 3px color-mix(in srgb, var(--accent) 70%, transparent);
+  animation: blip 1.8s ease-in-out infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes blip {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 1; }
+}
+
+.title {
+  font-size: 16px;
+  font-weight: 700;
+  margin: 0;
+}
+
+.subtitle {
+  font-size: 13px;
+  color: var(--text-muted);
+  margin: 0;
+  text-align: center;
+  max-width: 260px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sweep {
+    animation: none;
+    background: color-mix(in srgb, var(--accent) 25%, transparent);
+  }
+  .dot {
+    animation: none;
+    opacity: 0.9;
+  }
+}

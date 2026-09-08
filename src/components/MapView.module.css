@@ -1,0 +1,15 @@
+.container {
+  position: absolute;
+  inset: 0;
+  background: var(--bg);
+}
+
+.container :global(.leaflet-control-attribution) {
+  background: var(--surface-glass);
+  color: var(--text-muted);
+  backdrop-filter: blur(6px);
+}
+
+.container :global(.leaflet-control-attribution a) {
+  color: var(--text);
+}

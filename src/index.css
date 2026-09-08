@@ -1,0 +1,140 @@
+/* Variables de theming globales. Nada de colores hardcodeados en los componentes:
+   todo sale de estas custom properties, que cambian con [data-theme]. */
+:root {
+  color-scheme: light;
+
+  --bg: #eef2f6;
+  --bg-elevated: #ffffff;
+  --bg-elevated-2: #f6f8fa;
+  --text: #10151c;
+  --text-muted: #55606b;
+  --border: rgba(15, 23, 33, 0.1);
+  --shadow: 0 8px 28px rgba(15, 23, 33, 0.14);
+
+  --accent: #0d9488;
+  --accent-strong: #0f766e;
+  --accent-contrast: #ffffff;
+  --accent-soft: rgba(13, 148, 136, 0.14);
+
+  --level-far: #16a34a;
+  --level-early: #d97706;
+  --level-near: #dc2626;
+
+  --surface-glass: rgba(255, 255, 255, 0.62);
+  --surface-glass-border: rgba(255, 255, 255, 0.5);
+  --vehicle-glass: rgba(255, 255, 255, 0.75);
+
+  --tile-filter: none;
+  --map-dim: 0;
+
+  --radius-sm: 10px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+
+  --font-sans: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+
+  --transition-fast: 160ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-spring: 420ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    color-scheme: dark;
+    --bg: #05080c;
+    --bg-elevated: #0c1218;
+    --bg-elevated-2: #121a22;
+    --text: #e7eef4;
+    --text-muted: #8fa0ad;
+    --border: rgba(255, 255, 255, 0.1);
+    --shadow: 0 8px 32px rgba(0, 0, 0, 0.55);
+
+    --accent: #22d3ee;
+    --accent-strong: #67e8f9;
+    --accent-contrast: #04121a;
+    --accent-soft: rgba(34, 211, 238, 0.16);
+
+    --level-far: #34d399;
+    --level-early: #fbbf24;
+    --level-near: #fb5266;
+
+    --surface-glass: rgba(12, 18, 24, 0.6);
+    --surface-glass-border: rgba(255, 255, 255, 0.08);
+    --vehicle-glass: rgba(6, 10, 14, 0.75);
+
+    --tile-filter: invert(1) hue-rotate(180deg) brightness(0.92) contrast(0.95) saturate(0.9);
+    --map-dim: 1;
+  }
+}
+
+:root[data-theme='dark'] {
+  color-scheme: dark;
+  --bg: #05080c;
+  --bg-elevated: #0c1218;
+  --bg-elevated-2: #121a22;
+  --text: #e7eef4;
+  --text-muted: #8fa0ad;
+  --border: rgba(255, 255, 255, 0.1);
+  --shadow: 0 8px 32px rgba(0, 0, 0, 0.55);
+
+  --accent: #22d3ee;
+  --accent-strong: #67e8f9;
+  --accent-contrast: #04121a;
+  --accent-soft: rgba(34, 211, 238, 0.16);
+
+  --level-far: #34d399;
+  --level-early: #fbbf24;
+  --level-near: #fb5266;
+
+  --surface-glass: rgba(12, 18, 24, 0.6);
+  --surface-glass-border: rgba(255, 255, 255, 0.08);
+  --vehicle-glass: rgba(6, 10, 14, 0.75);
+
+  --tile-filter: invert(1) hue-rotate(180deg) brightness(0.92) contrast(0.95) saturate(0.9);
+  --map-dim: 1;
+}
+
+:root[data-theme='light'] {
+  color-scheme: light;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+  overscroll-behavior: none;
+}
+
+body {
+  font-family: var(--font-sans);
+  background: var(--bg);
+  color: var(--text);
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Crossfade de fallback cuando no hay View Transitions API disponible. */
+.theme-fade,
+.theme-fade * {
+  transition: background-color 380ms ease, color 380ms ease, border-color 380ms ease,
+    box-shadow 380ms ease, fill 380ms ease !important;
+}
+
+button {
+  font-family: inherit;
+  color: inherit;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

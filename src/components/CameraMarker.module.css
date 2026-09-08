@@ -1,0 +1,78 @@
+.wrap {
+  width: 28px;
+  height: 28px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--dot-color, var(--level-far));
+  box-shadow: 0 0 0 0 var(--dot-color, var(--level-far));
+  animation: breathe var(--breathe-duration, 2.4s) ease-in-out infinite;
+  border: 2px solid color-mix(in srgb, var(--dot-color, var(--level-far)) 60%, white 40%);
+}
+
+.dot.unreliable {
+  opacity: 0.55;
+  border-style: dashed;
+}
+
+.ring {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 2px solid var(--dot-color, var(--level-near));
+  opacity: 0;
+  animation: sonar 2.2s ease-out infinite;
+}
+
+.ring:nth-child(2) {
+  animation-delay: 0.5s;
+}
+
+.ring:nth-child(3) {
+  animation-delay: 1s;
+}
+
+.bump {
+  animation: bump 380ms cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes breathe {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 color-mix(in srgb, var(--dot-color, var(--level-far)) 55%, transparent);
+  }
+  50% {
+    transform: scale(1.22);
+    box-shadow: 0 0 14px 4px color-mix(in srgb, var(--dot-color, var(--level-far)) 40%, transparent);
+  }
+}
+
+@keyframes sonar {
+  0% {
+    transform: scale(0.35);
+    opacity: 0.65;
+  }
+  100% {
+    transform: scale(2.4);
+    opacity: 0;
+  }
+}
+
+@keyframes bump {
+  0% { transform: scale(1); }
+  40% { transform: scale(1.45); }
+  100% { transform: scale(1); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dot, .ring, .bump {
+    animation: none !important;
+  }
+}
