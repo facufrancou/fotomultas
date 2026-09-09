@@ -27,6 +27,14 @@ export function MapView({ smooth, camerasWithDistance, vehicleId, registerRecent
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
           maxZoom={19}
+          // En mobile Leaflet activa updateWhenIdle por defecto: no recarga
+          // tiles hasta que el mapa "termine de moverse". Una rotación pura
+          // nunca dispara ese evento, así que las esquinas se quedaban con
+          // tiles de antes de rotar (el efecto "imagen estática rota" con
+          // huecos negros). Con esto en false, leaflet-rotate sí reacciona
+          // al evento 'rotate' y pide los tiles que hacen falta al girar.
+          updateWhenIdle={false}
+          keepBuffer={4}
         />
         <MapAutoResize />
         {camerasWithDistance.map((camera) => (
