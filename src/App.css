@@ -1,7 +1,9 @@
 .app-root {
-  position: fixed;
-  inset: 0;
-  height: 100dvh;
+  /* position:relative (no fixed/inset/dvh) a propósito: ver la nota en
+     index.css sobre por qué el layout raíz se arma con height:100%
+     encadenado en vez de unidades de viewport + position:fixed. */
+  position: relative;
+  height: 100%;
   overflow: hidden;
   background: var(--bg);
 }
