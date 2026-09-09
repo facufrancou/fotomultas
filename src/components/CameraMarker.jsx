@@ -60,6 +60,12 @@ function CameraMarkerImpl({ camera }) {
         <strong>{camera.direccion}</strong>
         <br />
         {distanceLabel ? `A ${distanceLabel}` : 'Calculando distancia…'}
+        {camera.medicion && (
+          <>
+            <br />
+            {camera.medicion}
+          </>
+        )}
         {!camera.confiable && (
           <>
             <br />

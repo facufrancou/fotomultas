@@ -9,7 +9,7 @@ const defaultSettings = {
   voiceEnabled: true,
   vibrationEnabled: true,
   earlyRadius: 500,
-  nearRadius: 200,
+  nearRadius: 100,
   units: 'metric',
 };
 

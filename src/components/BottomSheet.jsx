@@ -12,10 +12,10 @@ function formatDistance(distance) {
 }
 
 /** HUD inferior: velocidad, próxima cámara y accesos a ajustes/tema/recentrado. */
-export function BottomSheet({ speedKmh, nearest, earlyRadius, onOpenSettings, onRecenter }) {
+export function BottomSheet({ speedKmh, nearest, earlyRadius, speedingAt, onOpenSettings, onRecenter }) {
   const hasAlert = nearest && Number.isFinite(nearest.distance) && nearest.distance <= earlyRadius;
   const progress = hasAlert ? 1 - nearest.distance / earlyRadius : 0;
-  const levelColor = nearest ? `var(--level-${nearest.level})` : 'var(--accent)';
+  const levelColor = speedingAt ? 'var(--level-near)' : nearest ? `var(--level-${nearest.level})` : 'var(--accent)';
 
   return (
     <section className={styles.sheet} aria-label="Panel de estado">
@@ -45,8 +45,13 @@ export function BottomSheet({ speedKmh, nearest, earlyRadius, onOpenSettings, on
 
         <div className={styles.stats}>
           <div className={styles.speed}>
-            <span className={styles.speedValue}>{speedKmh ?? '--'}</span>
+            <span className={`${styles.speedValue}${speedingAt ? ` ${styles.speeding}` : ''}`}>
+              {speedKmh ?? '--'}
+            </span>
             <span className={styles.speedUnit}>km/h</span>
+            {speedingAt && (
+              <span className={styles.speedingTag}>Máx {speedingAt.speedLimit}</span>
+            )}
           </div>
           {nearest ? (
             <div className={styles.nextCamera}>
@@ -60,6 +65,9 @@ export function BottomSheet({ speedKmh, nearest, earlyRadius, onOpenSettings, on
             </div>
           ) : (
             <div className={styles.emptyState}>Sin cámaras cercanas</div>
+          )}
+          {hasAlert && nearest.medicion && (
+            <div className={styles.medicion}>{nearest.medicion}</div>
           )}
         </div>
 

@@ -31,13 +31,18 @@ function AppShell() {
   const { heading } = useHeading();
   const snappedFix = useRoadSnap(fix);
   const smooth = useSmoothPosition(snappedFix ?? fix, heading);
-  const { camerasWithDistance, nearest } = useProximityAlerts({
+  const speedKmh =
+    smooth.sampled.hasFix && typeof smooth.sampled.speed === 'number'
+      ? Math.max(0, Math.round(smooth.sampled.speed * 3.6))
+      : null;
+  const { camerasWithDistance, nearest, speedingAt } = useProximityAlerts({
     position: smooth.sampled,
     cameras,
     earlyRadius: settings.earlyRadius,
     nearRadius: settings.nearRadius,
     voiceEnabled: settings.voiceEnabled,
     vibrationEnabled: settings.vibrationEnabled,
+    speedKmh,
   });
 
   useWakeLock(true); // la pantalla no debe apagarse sola mientras se navega
@@ -54,11 +59,6 @@ function AppShell() {
     recenterRef.current?.();
     setIsFollowing(true);
   }, []);
-
-  const speedKmh =
-    smooth.sampled.hasFix && typeof smooth.sampled.speed === 'number'
-      ? Math.max(0, Math.round(smooth.sampled.speed * 3.6))
-      : null;
 
   const waitingForFirstFix = !smooth.sampled.hasFix && status !== 'error';
 
@@ -87,6 +87,7 @@ function AppShell() {
         speedKmh={speedKmh}
         nearest={nearest}
         earlyRadius={settings.earlyRadius}
+        speedingAt={speedingAt}
         onOpenSettings={openSettings}
         onRecenter={handleRecenter}
       />

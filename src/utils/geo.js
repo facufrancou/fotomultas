@@ -55,6 +55,14 @@ export function lerp(a, b, t) {
   return a + (b - a) * t;
 }
 
+/** Extrae el límite de velocidad (km/h) del texto de "medicion" de una cámara,
+ * ej. "Exceso de velocidad (Máxima 60 km/h)" -> 60. Null si no especifica número. */
+export function parseSpeedLimit(medicion) {
+  if (!medicion) return null;
+  const match = medicion.match(/m[aá]xima\s*(\d+)\s*km\s*\/?\s*h/i);
+  return match ? Number(match[1]) : null;
+}
+
 /** Destino a partir de un punto, rumbo (grados) y distancia (metros). */
 export function destinationPoint(lat, lng, bearingDeg, distanceM) {
   const delta = distanceM / EARTH_RADIUS_M;
