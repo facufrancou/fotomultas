@@ -35,5 +35,6 @@
   { "id": 35, "direccion": "Acceso Norte - Uranga y Soler", "lat": -31.7259, "lng": -60.5056, "confiable": true, "medicion": "Semáforo en rojo, senda peatonal, velocidad (acceso rápido)" },
   { "id": 36, "direccion": "Acceso Este - Almafuerte y Maya", "lat": -31.7485, "lng": -60.4578, "confiable": true, "medicion": "Semáforo en rojo, senda peatonal" },
   { "id": 37, "direccion": "Av. Ramírez y Av. Don Bosco", "lat": -31.732898, "lng": -60.515984, "confiable": true, "medicion": "Semáforo en rojo, senda peatonal" },
-  { "id": 38, "direccion": "RN12 - Colonia Avellaneda", "lat": -31.766995, "lng": -60.399813, "confiable": true, "medicion": "Exceso de velocidad" }
+  { "id": 38, "direccion": "RN12 - Colonia Avellaneda", "lat": -31.766995, "lng": -60.399813, "confiable": true, "medicion": "Exceso de velocidad" },
+  { "id": 39, "direccion": "Acceso Norte - Parque Botánico", "lat": -31.738890, "lng": -60.446563, "confiable": true, "medicion": "Exceso de velocidad (Máxima 80 km/h)" }
 ]
