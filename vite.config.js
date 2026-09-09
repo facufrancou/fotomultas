@@ -66,7 +66,11 @@ export default defineConfig({
         ],
       },
       devOptions: {
-        enabled: true,
+        // Apagado en dev: un Service Worker activo mientras corrés `npm run dev`
+        // puede servir versiones cacheadas de módulos en vez de tus últimos
+        // cambios. La PWA (SW + manifest) se sigue generando y probando normal
+        // con `npm run build && npm run preview`.
+        enabled: false,
       },
     }),
   ],

@@ -3,12 +3,14 @@ import { ThemeProvider } from './context/ThemeContext.jsx';
 import { SettingsProvider, useSettings } from './context/SettingsContext.jsx';
 import { useGeolocation } from './hooks/useGeolocation.js';
 import { useHeading } from './hooks/useHeading.js';
+import { useRoadSnap } from './hooks/useRoadSnap.js';
 import { useSmoothPosition } from './hooks/useSmoothPosition.js';
 import { useProximityAlerts } from './hooks/useProximityAlerts.js';
 import { MapView } from './components/MapView.jsx';
 import { BottomSheet } from './components/BottomSheet.jsx';
 import { SettingsPanel } from './components/SettingsPanel.jsx';
 import { InstallPrompt } from './components/InstallPrompt.jsx';
+import { RecenterButton } from './components/RecenterButton.jsx';
 import { Splash } from './components/Splash.jsx';
 import cameras from './data/camaras_parana.json';
 import './App.css';
@@ -26,7 +28,8 @@ function AppShell() {
   const { settings } = useSettings();
   const { fix, error, status } = useGeolocation();
   const { heading } = useHeading();
-  const smooth = useSmoothPosition(fix, heading);
+  const snappedFix = useRoadSnap(fix);
+  const smooth = useSmoothPosition(snappedFix ?? fix, heading);
   const { camerasWithDistance, nearest } = useProximityAlerts({
     position: smooth.sampled,
     cameras,
@@ -37,10 +40,16 @@ function AppShell() {
   });
 
   const [settingsOpen, setSettingsOpen] = useState(false);
+  const [isFollowing, setIsFollowing] = useState(true);
   const recenterRef = useRef(null);
 
   const registerRecenter = useCallback((fn) => {
     recenterRef.current = fn;
+  }, []);
+
+  const handleRecenter = useCallback(() => {
+    recenterRef.current?.();
+    setIsFollowing(true);
   }, []);
 
   const speedKmh =
@@ -60,6 +69,7 @@ function AppShell() {
         camerasWithDistance={camerasWithDistance}
         vehicleId={settings.vehicleId}
         registerRecenter={registerRecenter}
+        onFollowChange={setIsFollowing}
       />
 
       {status === 'error' && !smooth.sampled.hasFix && (
@@ -68,12 +78,14 @@ function AppShell() {
 
       <InstallPrompt />
 
+      {!isFollowing && smooth.sampled.hasFix && <RecenterButton onClick={handleRecenter} />}
+
       <BottomSheet
         speedKmh={speedKmh}
         nearest={nearest}
         earlyRadius={settings.earlyRadius}
         onOpenSettings={openSettings}
-        onRecenter={() => recenterRef.current?.()}
+        onRecenter={handleRecenter}
       />
 
       {settingsOpen && <SettingsPanel onClose={closeSettings} />}

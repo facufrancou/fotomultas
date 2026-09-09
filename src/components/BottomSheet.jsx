@@ -76,6 +76,18 @@ export function BottomSheet({ speedKmh, nearest, earlyRadius, onOpenSettings, on
           </button>
         </div>
       </div>
+
+      <p className={styles.credit}>
+        Creado y desarrollado por{' '}
+        <a
+          className={styles.krevik}
+          href="https://krevik.ar"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          KREVIK
+        </a>
+      </p>
     </section>
   );
 }
