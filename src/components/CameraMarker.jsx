@@ -3,15 +3,21 @@ import { Marker, Popup } from 'react-leaflet';
 import L from 'leaflet';
 import styles from './CameraMarker.module.css';
 
-const BREATHE_DURATION = { far: '2.6s', early: '1.6s', near: '0.9s' };
+const BREATHE_MS = { far: 2600, early: 1600, near: 900 };
 
 function buildIcon(level, confiable) {
   const rings =
     level !== 'far'
       ? `<span class="${styles.ring}"></span><span class="${styles.ring}"></span><span class="${styles.ring}"></span>`
       : '';
+  const durationMs = BREATHE_MS[level];
+  // Delay negativo = -(reloj actual módulo duración): así todos los marcadores
+  // con el mismo nivel (misma duración) quedan en fase entre sí sin importar
+  // en qué momento se montó cada uno, en vez de arrancar cada animación desde
+  // cero al crearse el <div>.
+  const delayMs = -(Date.now() % durationMs);
   const html = `
-    <div class="${styles.wrap}" style="--dot-color:var(--level-${level});--breathe-duration:${BREATHE_DURATION[level]}">
+    <div class="${styles.wrap}" style="--dot-color:var(--level-${level});--breathe-duration:${durationMs}ms;--breathe-delay:${delayMs}ms">
       ${rings}
       <span class="${styles.dot}${confiable ? '' : ` ${styles.unreliable}`}"></span>
     </div>`;

@@ -13,7 +13,7 @@
   border-radius: 50%;
   background: var(--dot-color, var(--level-far));
   box-shadow: 0 0 0 0 var(--dot-color, var(--level-far));
-  animation: breathe var(--breathe-duration, 2.4s) ease-in-out infinite;
+  animation: breathe var(--breathe-duration, 2.4s) ease-in-out var(--breathe-delay, 0s) infinite;
   border: 2px solid color-mix(in srgb, var(--dot-color, var(--level-far)) 60%, white 40%);
 }
 
