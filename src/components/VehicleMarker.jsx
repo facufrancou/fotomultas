@@ -28,8 +28,8 @@ function buildIcon(vehicleId) {
   return L.divIcon({
     html,
     className: '', // sin clases default de Leaflet que agreguen fondo/borde
-    iconSize: [42, 68],
-    iconAnchor: [21, 34],
+    iconSize: [34, 34],
+    iconAnchor: [17, 17],
   });
 }
 

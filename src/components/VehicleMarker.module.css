@@ -1,6 +1,6 @@
 .outer {
-  width: 42px;
-  height: 68px;
+  width: 34px;
+  height: 34px;
   pointer-events: none;
 }
 
@@ -9,7 +9,7 @@
   height: 100%;
   will-change: transform;
   transform-origin: 50% 50%;
-  filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.45));
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.45));
 }
 
 .rotor svg {

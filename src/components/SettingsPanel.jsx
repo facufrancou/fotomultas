@@ -25,7 +25,7 @@ function Switch({ on, onToggle, label }) {
   );
 }
 
-/** Modal de ajustes: vehículo, alertas de voz/vibración y tema. */
+/** Modal de ajustes: color de la flecha, alertas de voz/vibración y tema. */
 export function SettingsPanel({ onClose }) {
   const { settings, dispatch } = useSettings();
   const { mode, setMode } = useTheme();
@@ -45,7 +45,7 @@ export function SettingsPanel({ onClose }) {
         </div>
 
         <div className={styles.section}>
-          <h3 className={styles.sectionTitle}>Vehículo</h3>
+          <h3 className={styles.sectionTitle}>Color</h3>
           <VehiclePicker
             selectedId={settings.vehicleId}
             onSelect={(vehicleId) => dispatch({ type: 'SET_VEHICLE', vehicleId })}

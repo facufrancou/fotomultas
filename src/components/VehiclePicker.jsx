@@ -2,8 +2,8 @@ import { useState } from 'react';
 import { VEHICLES } from '../assets/vehicles/vehicleShapes.js';
 import styles from './VehiclePicker.module.css';
 
-/** Grilla de selección de vehículo: al tocar un modelo, gira levemente
- * (mostrando que rota con el heading) y queda seleccionado. */
+/** Grilla de selección de color de la flecha: al tocar una opción, gira levemente
+ * (mostrando que rota con el heading) y queda seleccionada. */
 export function VehiclePicker({ selectedId, onSelect }) {
   const [spinningId, setSpinningId] = useState(null);
 
@@ -14,7 +14,7 @@ export function VehiclePicker({ selectedId, onSelect }) {
   };
 
   return (
-    <div className={styles.grid} role="listbox" aria-label="Elegir vehículo">
+    <div className={styles.grid} role="listbox" aria-label="Elegir color de la flecha">
       {VEHICLES.map((vehicle) => (
         <button
           key={vehicle.id}

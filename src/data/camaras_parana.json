@@ -23,7 +23,6 @@
   { "id": 22, "direccion": "Av. Don Bosco y Constituyentes", "lat": -31.735004, "lng": -60.502981, "confiable": true },
   { "id": 23, "direccion": "Blas Parera y Churruarín", "lat": -31.746284, "lng": -60.495051, "confiable": true },
   { "id": 24, "direccion": "Av. Almafuerte y Borges", "lat": -31.760421, "lng": -60.468652, "confiable": true },
-  { "id": 25, "direccion": "Laurencena y Av. Ramírez", "lat": -31.786147, "lng": -60.442763, "confiable": true },
   { "id": 26, "direccion": "Av. Ejército y Gutiérrez", "lat": -31.744816, "lng": -60.536140, "confiable": true },
   { "id": 27, "direccion": "Av. Ejército y Alvarado", "lat": -31.747487, "lng": -60.536765, "confiable": true },
   { "id": 28, "direccion": "Galán y Av. Ejército", "lat": -31.742297, "lng": -60.535671, "confiable": true },
