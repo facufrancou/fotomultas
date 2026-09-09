@@ -1,4 +1,4 @@
-import { useMemo, useRef } from 'react';
+import { memo, useMemo, useRef } from 'react';
 import { Marker, Popup } from 'react-leaflet';
 import L from 'leaflet';
 import styles from './CameraMarker.module.css';
@@ -30,7 +30,7 @@ function formatDistance(distance) {
 }
 
 /** Marcador de cámara: respira más rápido y cambia de color a medida que se acerca. */
-export function CameraMarker({ camera }) {
+function CameraMarkerImpl({ camera }) {
   const markerRef = useRef(null);
   const icon = useMemo(() => buildIcon(camera.level, camera.confiable), [camera.level, camera.confiable]);
   const distanceLabel = formatDistance(camera.distance);
@@ -53,7 +53,10 @@ export function CameraMarker({ camera }) {
       icon={icon}
       eventHandlers={{ click: handleClick }}
     >
-      <Popup>
+      {/* autoPan desactivado: si no, cada vez que la distancia se actualiza (varias
+          veces por segundo mientras hay GPS activo) Leaflet repanea el mapa solo
+          para "mantener visible" el popup, peleando con el gesto del usuario. */}
+      <Popup autoPan={false}>
         <strong>{camera.direccion}</strong>
         <br />
         {distanceLabel ? `A ${distanceLabel}` : 'Calculando distancia…'}
@@ -67,3 +70,17 @@ export function CameraMarker({ camera }) {
     </Marker>
   );
 }
+
+function sameCamera(prev, next) {
+  const a = prev.camera;
+  const b = next.camera;
+  if (a.id !== b.id || a.level !== b.level || a.confiable !== b.confiable || a.direccion !== b.direccion) {
+    return false;
+  }
+  // Redondeamos a 10m: evita re-renderizar (y re-disparar el popup) en cada
+  // muestra de posición cuando el número mostrado ni siquiera va a cambiar.
+  const round = (d) => (Number.isFinite(d) ? Math.round(d / 10) : -1);
+  return round(a.distance) === round(b.distance);
+}
+
+export const CameraMarker = memo(CameraMarkerImpl, sameCamera);

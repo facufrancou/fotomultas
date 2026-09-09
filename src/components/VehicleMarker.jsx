@@ -6,6 +6,19 @@ import styles from './VehicleMarker.module.css';
 
 const RECENTER_INTERVAL_MS = 1500; // el paneo del mapa va más espaciado que el marcador (60fps)
 
+// El ícono se dibujó pensando en zoom 17 (nivel al que centramos al arrancar).
+// Los tiles raster de OSM duplican su tamaño en pantalla por cada nivel de zoom,
+// así que escalamos el auto con esa misma potencia de 2 para que "acompañe" a las
+// calles en vez de quedar con un tamaño fijo (chico/gigante/deforme según el zoom).
+const REFERENCE_ZOOM = 17;
+const MIN_SCALE = 0.5;
+const MAX_SCALE = 1.85;
+
+function zoomScale(zoom) {
+  const raw = 2 ** (zoom - REFERENCE_ZOOM);
+  return Math.min(MAX_SCALE, Math.max(MIN_SCALE, raw));
+}
+
 function buildIcon(vehicleId) {
   const vehicle = getVehicleById(vehicleId);
   const html = `
@@ -83,7 +96,8 @@ export function VehicleMarker({ smooth, vehicleId, registerRecenter }) {
 
       marker.setLatLng([state.lat, state.lng]);
       if (rotorRef.current) {
-        rotorRef.current.style.transform = `rotate(${state.heading}deg)`;
+        const scale = zoomScale(map.getZoom());
+        rotorRef.current.style.transform = `rotate(${state.heading}deg) scale(${scale})`;
       }
 
       if (!centeredOnceRef.current) {

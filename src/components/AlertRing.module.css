@@ -15,7 +15,3 @@
   stroke-linecap: round;
   transition: stroke-dashoffset 300ms ease, stroke 300ms ease;
 }
-
-.center {
-  transform: rotate(90deg);
-}

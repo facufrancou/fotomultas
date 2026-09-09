@@ -31,7 +31,6 @@ export function AlertRing({ progress = 0, size = 84, strokeWidth = 7, color, chi
         />
       </svg>
       <div
-        className={styles.center}
         style={{
           position: 'absolute',
           inset: 0,

@@ -1,6 +1,7 @@
 .app-root {
   position: fixed;
   inset: 0;
+  height: 100dvh;
   overflow: hidden;
   background: var(--bg);
 }
@@ -14,6 +15,32 @@
 
 .leaflet-container {
   background: var(--bg);
+}
+
+.leaflet-popup-content-wrapper {
+  background: var(--surface-glass);
+  color: var(--text);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid var(--surface-glass-border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow);
+}
+
+.leaflet-popup-tip {
+  background: var(--surface-glass);
+  border: 1px solid var(--surface-glass-border);
+}
+
+.leaflet-popup-content {
+  margin: 12px 14px;
+  font-family: var(--font-sans);
+  font-size: 13.5px;
+  line-height: 1.5;
+}
+
+.leaflet-popup-close-button {
+  color: var(--text-muted) !important;
 }
 
 .gpsBanner {
