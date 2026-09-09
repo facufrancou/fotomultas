@@ -31,7 +31,7 @@
   { "id": 31, "direccion": "RP11 - Acceso Sur Oro Verde", "lat": -31.800250, "lng": -60.514324, "confiable": true, "medicion": "Uso de teléfono celular, falta de cinturón de seguridad" },
   { "id": 32, "direccion": "RP11 Oro Verde - Los Chañares", "lat": -31.821050, "lng": -60.515285, "confiable": true, "medicion": "Exceso de velocidad (Máxima 60 km/h)" },
   { "id": 33, "direccion": "RP11 Oro Verde - UADER", "lat": -31.833987, "lng": -60.522948, "confiable": true, "medicion": "Exceso de velocidad" },
-  { "id": 34, "direccion": "RN18 - Sauce Montrull", "lat": -31.7583, "lng": -60.3845, "confiable": true, "medicion": "Exceso de velocidad (Máxima 80 km/h)" },
+  { "id": 34, "direccion": "RN18 - Sauce Montrull", "lat": -31.776031, "lng": -60.369941, "confiable": true, "medicion": "Exceso de velocidad (Máxima 80 km/h)" },
   { "id": 35, "direccion": "Acceso Norte - Uranga y Soler", "lat": -31.7259, "lng": -60.5056, "confiable": true, "medicion": "Semáforo en rojo, senda peatonal, velocidad (acceso rápido)" },
   { "id": 36, "direccion": "Acceso Este - Almafuerte y Maya", "lat": -31.7485, "lng": -60.4578, "confiable": true, "medicion": "Semáforo en rojo, senda peatonal" },
   { "id": 37, "direccion": "Av. Ramírez y Av. Don Bosco", "lat": -31.732898, "lng": -60.515984, "confiable": true, "medicion": "Semáforo en rojo, senda peatonal" },
