@@ -6,6 +6,7 @@ import { useHeading } from './hooks/useHeading.js';
 import { useRoadSnap } from './hooks/useRoadSnap.js';
 import { useSmoothPosition } from './hooks/useSmoothPosition.js';
 import { useProximityAlerts } from './hooks/useProximityAlerts.js';
+import { useWakeLock } from './hooks/useWakeLock.js';
 import { MapView } from './components/MapView.jsx';
 import { BottomSheet } from './components/BottomSheet.jsx';
 import { SettingsPanel } from './components/SettingsPanel.jsx';
@@ -38,6 +39,8 @@ function AppShell() {
     voiceEnabled: settings.voiceEnabled,
     vibrationEnabled: settings.vibrationEnabled,
   });
+
+  useWakeLock(true); // la pantalla no debe apagarse sola mientras se navega
 
   const [settingsOpen, setSettingsOpen] = useState(false);
   const [isFollowing, setIsFollowing] = useState(true);

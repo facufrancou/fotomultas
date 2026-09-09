@@ -6,7 +6,9 @@ import styles from './MapView.module.css';
 
 const PARANA_CENTER = [-31.7333, -60.5238];
 
-/** Mapa a pantalla completa: tiles OSM, cámaras y el marcador imperativo del vehículo. */
+/** Mapa a pantalla completa: tiles OSM, cámaras y el marcador imperativo del vehículo.
+ * Modo "heading-up": el mapa rota para que arriba siempre sea el sentido de
+ * circulación (VehicleMarker mueve la brújula vía map.setBearing()). */
 export function MapView({ smooth, camerasWithDistance, vehicleId, registerRecenter, onFollowChange }) {
   return (
     <div className={styles.container}>
@@ -14,6 +16,11 @@ export function MapView({ smooth, camerasWithDistance, vehicleId, registerRecent
         center={PARANA_CENTER}
         zoom={14}
         zoomControl={false}
+        rotate
+        rotateControl={false}
+        touchRotate={false}
+        shiftKeyRotate={false}
+        bearing={0}
         style={{ height: '100%', width: '100%' }}
       >
         <TileLayer

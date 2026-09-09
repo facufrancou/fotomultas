@@ -109,8 +109,14 @@ export function VehicleMarker({ smooth, vehicleId, registerRecenter, onFollowCha
 
       marker.setLatLng([state.lat, state.lng]);
       if (rotorRef.current) {
+        // La flecha ya no rota sobre sí misma: en modo "heading-up" es el
+        // MAPA el que gira (más abajo) para que arriba siempre sea el sentido
+        // de circulación, así la flecha se queda fija apuntando para arriba.
         const scale = zoomScale(map.getZoom());
-        rotorRef.current.style.transform = `rotate(${state.heading}deg) scale(${scale})`;
+        rotorRef.current.style.transform = `scale(${scale})`;
+      }
+      if (typeof map.setBearing === 'function') {
+        map.setBearing(state.heading);
       }
 
       if (!centeredOnceRef.current) {

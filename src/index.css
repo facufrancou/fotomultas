@@ -111,6 +111,12 @@ html,
 body,
 #root {
   height: 100%;
+  /* Red de seguridad para Android: si el porcentaje encadenado alguna vez
+     computa contra un ancestro más chico que la pantalla real (barra del
+     navegador reacomodándose), min-height con la unidad de viewport MÁS
+     CHICA garantizada (svh, nunca más grande que lo visible) fuerza a
+     ocupar toda la pantalla sin poder generar overflow/scroll de más. */
+  min-height: 100svh;
   margin: 0;
   overflow: hidden;
   overscroll-behavior: none;
