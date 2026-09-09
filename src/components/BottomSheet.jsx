@@ -95,6 +95,15 @@ export function BottomSheet({ speedKmh, nearest, earlyRadius, speedingAt, onOpen
         >
           KREVIK
         </a>
+        {' · '}
+        <a
+          className={styles.donate}
+          href="https://mpago.la/2y6THXZ"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Donar
+        </a>
       </p>
     </section>
   );

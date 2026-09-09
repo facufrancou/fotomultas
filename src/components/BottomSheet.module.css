@@ -214,6 +214,19 @@
     0 0 36px rgba(57, 255, 138, 0.45);
 }
 
+.donate {
+  color: var(--accent);
+  font-weight: 700;
+  text-decoration: none;
+  transition: opacity var(--transition-fast);
+}
+
+.donate:hover,
+.donate:focus-visible {
+  opacity: 0.8;
+  text-decoration: underline;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .sheet {
     animation: none;
